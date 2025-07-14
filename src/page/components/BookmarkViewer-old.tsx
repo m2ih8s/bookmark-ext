@@ -13,9 +13,10 @@ const BookmarkViewer = ({bookmarkId}: {bookmarkId:string}) => {
         else{
           setBookmark(undefined);
         }
-      }).catch( (results)=>{
-        console.log(results);
+      }).catch( ()=>{
+        console.log("no bookmark");
       });
+  
   },[bookmarkId]);
 
   if (!bookmark) {

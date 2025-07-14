@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// 1. consoleにテキストを出力
+import BookmarkViewer from './components/BookmarkViewer'
+
 console.log('MyPage')
 
 const root = document.createElement('div')
@@ -10,7 +11,7 @@ document.body.appendChild(root)
 
 createRoot(root).render(
   <StrictMode>
-    <h1>Manager page</h1>
+    <BookmarkViewer />
   </StrictMode>
 )
 

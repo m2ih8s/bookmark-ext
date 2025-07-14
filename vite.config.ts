@@ -11,10 +11,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         popup: join(__dirname, 'src/popup/index.html'),
-        manager: join(__dirname, 'src/manager/index.html'),
+        viewer: join(__dirname, 'src/page/index.html'),
+        background: join(__dirname, 'src/background/index.tsx'),
       },
       output: {
-        entryFileNames: 'asset/[name].js'
+        entryFileNames: 'assets/[name].js'
       },
     }
   },

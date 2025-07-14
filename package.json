@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "build:watch": "vite build --watch",
+    "build": "npm run clean && tsc -b && vite build",
+    "build:watch": "npm run clean && tsc -b && vite build --watch",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -25,6 +26,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "rimraf": "^6.0.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
     "vite": "^7.0.3"
