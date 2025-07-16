@@ -1,5 +1,3 @@
-import { useState,useEffect } from 'react';
-
 const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
   if (node.url) {
     // URLを持つブックマーク
@@ -8,7 +6,7 @@ const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
         <a href={node.url} target="_blank" rel="noopener noreferrer">
           {node.title || node.url}
         </a> id:{node.id}
-        <strong> tags: </strong> A, B ,C
+        <strong> tags: </strong>
       </li>
     );
   } else {
@@ -29,29 +27,7 @@ const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
 };
 
 
-const BookmarkViewer = () => {
-  const [bookmarks, setBookmarks] = useState<chrome.bookmarks.BookmarkTreeNode[]|undefined>(undefined);
-
-  useEffect( ()=>{
-    chrome.bookmarks.getTree()
-      .then( (result)=>{
-        if (result) {
-          setBookmarks(result);
-        }
-        else{
-          setBookmarks(undefined);
-        }
-      }).catch( ()=>{
-        console.log("no bookmark");
-      });
-  },[]);
-
-  if(!bookmarks){
-    return (
-      <h1>No bookmarks</h1>
-    );
-  }
-
+const BookmarkViewer = ({bookmarks}: {bookmarks:chrome.bookmarks.BookmarkTreeNode[]}) => {
   return (
     <div>
       <h1>Bookmark manager</h1>

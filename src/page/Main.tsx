@@ -1,20 +1,27 @@
-// import { useState } from 'react';
-import BookmarkViewer from './components/BookmarkViewer';
+import { useState, useEffect } from 'react';
+import BookmarkViewer from './components/BookmarkViewer.tsx';
 
 const Main = () => {
-  let tree : chrome.bookmarks.BookmarkTreeNode[] = [];
 
-  chrome.bookmarks.getTree()
-    .then( (result)=>{
-      tree=result;
-      console.log(tree);
-    }).catch( (result)=>{
-      console.log(result)
-  })
+  const [bookmarks, setBookmarks] = useState<chrome.bookmarks.BookmarkTreeNode[]>([]);
+  
+  useEffect( ()=>{
+    chrome.bookmarks.getTree()
+      .then( (result)=>{
+        if (result) {
+          setBookmarks(result);
+        }
+        else{
+          setBookmarks([]);
+        }
+      }).catch( ()=>{
+        console.log("Error in getTree");
+      });
+  },[]);
 
   return (
     <div>
-      <BookmarkViewer />
+      <BookmarkViewer bookmarks={bookmarks}/>
     </div>
   );
 }
