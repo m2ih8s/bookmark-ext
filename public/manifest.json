@@ -12,5 +12,18 @@
   ],
   "background": {
     "service_worker": "/assets/background.js"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [ 
+        "tags.sqlite3",
+        "sql-wasm.wasm"
+      ],
+      "matches": [ "<all_urls>" ]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
 }

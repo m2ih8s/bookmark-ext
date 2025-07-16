@@ -24,5 +24,16 @@ export default defineConfig({
       '@src': resolve(__dirname, 'src')
     }
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
+  optimizeDeps: {
+    exclude: ['@sqlite.org/sqlite-wasm'],
+  },
 })

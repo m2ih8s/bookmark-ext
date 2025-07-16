@@ -1,4 +1,9 @@
+// import { useState } from 'react';
+
 const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
+  // const [tags, setTags] = useState<string[]>([]);
+  const tags : string[] = ["a","b"]
+  
   if (node.url) {
     // URLを持つブックマーク
     return (
@@ -6,7 +11,7 @@ const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
         <a href={node.url} target="_blank" rel="noopener noreferrer">
           {node.title || node.url}
         </a> id:{node.id}
-        <strong> tags: </strong>
+        { (tags.length>0) && <span>&nbsp;<strong>tags:</strong>{tags.map((tag)=> <span>&nbsp;{tag}</span> )}</span>}
       </li>
     );
   } else {
