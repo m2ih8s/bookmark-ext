@@ -2,7 +2,7 @@
 
 const BookmarkItem = ({node} : {node:chrome.bookmarks.BookmarkTreeNode}) => {
   // const [tags, setTags] = useState<string[]>([]);
-  const tags : string[] = ["a","b"]
+  const tags : string[] = []
   
   if (node.url) {
     // URLを持つブックマーク
